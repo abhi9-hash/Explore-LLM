@@ -1,0 +1,58 @@
+.mainContainer {
+  margin-top: 4rem;
+  font-family: sans-serif;
+  text-align: center;
+  width: 100VW;
+  
+
+}
+
+.formContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: auto auto;
+}
+
+.imageContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formControl {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.274);
+  background-color: white;
+  border: none;
+  color: rgba(0, 0, 0, 0.637);
+  padding: 5px;
+  width:60vw;
+  /* min-width: 60vw; */
+  outline: none;
+  border-radius: 10px;
+  font: 300 1.1vmax;
+  box-sizing: border-box;
+  height: 100%;
+  /* margin: 1rem */
+}
+
+.card{
+  width: "max-content";
+ margin-top:4em;
+ margin-bottom:4em;
+
+}
+.button{
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: all 0.5s;
+  background-color: tomato;
+  font: 500 0.7vmax;
+  border-radius: 20px;
+  height: fit-content;
+  padding: 5px;
+  outline: none;
+  margin-left: 2em
+}

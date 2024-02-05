@@ -1,0 +1,54 @@
+.body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.box {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  width: 300px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:disabled {
+  background-color: #dddddd;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+span {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+p {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+/* Add additional styles as needed */

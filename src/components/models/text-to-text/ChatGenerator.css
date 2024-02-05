@@ -1,0 +1,57 @@
+/* ChatGenerator.css */
+
+.chat-container {
+    max-width: 400px;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .chat-messages {
+    padding: 10px;
+    height: 200px;
+    overflow-y: auto;
+  }
+  
+  .chat-messages p {
+    margin: 5px 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .user {
+    color: #007bff;
+  }
+  
+  .model {
+    color: #28a745;
+  }
+  
+  .chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+  }
+  
+  input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

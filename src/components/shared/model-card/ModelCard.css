@@ -1,0 +1,90 @@
+  .homeHeading {
+    text-align: center;
+    /* font-family: Roboto; */
+    font-size: 1.4vmax;
+    border-bottom: 1px solid rgba(21, 21, 21, 0.5);
+    width: 20vmax;
+    padding: 1vmax;
+    margin: 5vmax auto;
+    color: rgb(0, 0, 0, 0.7);
+  }
+  
+  .container {
+    display: flex;
+    margin: 2vmax auto;
+    width: 80vw;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+  }
+  
+  .modelCard {
+    width: 14vmax;
+    display: flex;
+    flex-direction: column;
+    color: rgb(48, 48, 48);
+    margin: 2vmax;
+    transition: all 0.5s;
+    padding-bottom: 0.5vmax;
+    text-decoration: none;
+    font-style: none;
+    box-shadow: 0 0 5px rgba(95, 93, 93, 0.26);
+  }
+  
+  .modelCard > img {
+    width: 14vmax;
+  }
+  
+  .modelCard > div {
+    margin: 0.5vmax;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* font-size: 4px; */
+  }
+  
+  .modelCardSpan {
+    margin: 0.5vmax;
+    font: 300 0.7vmax "Roboto";
+  }
+  
+  .modelCard > p {
+    /* font-family: "Roboto"; */
+    font-size: 1.2vmax;
+    margin: 1vmax 0.5vmax;
+    margin-bottom: 0;
+  }
+  
+  .modelCard > span {
+    margin: 0.5vmax;
+    color: tomato;
+    /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
+    font-size: 1vmax;
+  }
+  
+  .modelCard:hover {
+    color: rgb(48, 48, 48);
+    box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+    text-decoration: none;
+    transform: translateY(-1vmax);
+  }
+  @media screen and (max-width: 600px) {
+    .modelCard > p {
+      font-size: 1.7vmax;
+    }
+  
+    .modelCard > div {
+      margin: 0vmax;
+      display: block;
+    }
+  
+    .modelCard > span {
+      font-size: 1.5vmax;
+    }
+  
+    .modelCard > div > span {
+      margin: 0 0.5vmax;
+      font: 300 1vmax "Roboto";
+    }
+  }
+  

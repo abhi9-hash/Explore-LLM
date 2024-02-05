@@ -1,0 +1,16 @@
+.mainContainer {
+  margin-bottom: 4rem;
+}
+
+.snippet {
+  width: 40vw;
+  margin: auto auto;
+  max-height: 40rem;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px) {
+  .snippet {
+    width: 80vw;
+  }
+}

@@ -1,0 +1,49 @@
+
+  .filter-button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.616);
+    padding: 0.5vmax;
+    cursor: pointer;
+    color: white;
+    transition: all 0.5s;
+  }
+  
+  .filterBox {
+    width: 10vw;
+    margin:2rem
+  }
+  
+  .categoryBox {
+    padding: 0%;
+  }
+  
+  .category-link {
+    list-style: none;
+    color: rgba(0, 0, 0, 0.61);
+    font: 400 1vmax;
+    margin: 0.4vmax;
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+  .category-link:hover {
+    color: tomato;
+  }
+  /* .filterBox > fieldset {
+    border: 1px solid rgba(0, 0, 0, 0.329);
+  } */
+  
+  @media screen and (max-width: 700px) {
+    .filterBox {
+      width: 80%;
+      /* position: static; */
+      margin: auto auto;
+    }
+  
+    .page-link {
+      font: 300 1.7vmax;
+    }
+    .category-link {
+      font: 400 1.8vmax;
+    }
+  }
+  
