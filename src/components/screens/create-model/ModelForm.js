@@ -59,11 +59,8 @@ const ModelForm = () => {
         },
       ],
     };
-
-    const response = await axios.post(
-      "http://localhost:4000/models/create",
-      body
-    );
+    const baseURL = process.env.REACT_APP_BASE_URL;
+    const response = await axios.post(`${baseURL}/models/create`, body);
 
     console.log({ response });
 
@@ -97,17 +94,18 @@ const ModelForm = () => {
 
         <div className="form-group">
           <label>Code:</label>
-          <CodeMirror
-            value={formData.code}
-            options={{
-              mode: "javascript",
-              theme: "material",
-              lineNumbers: true,
-            }}
-            onBeforeChange={(editor, data, value) =>
-              setFormData({ ...formData, code: value })
-            }
-          />
+          <div style={{ width: "500px", overflow: "auto" }}>
+            <CodeMirror
+              value={formData.code}
+              options={{
+                mode: "javascript",
+                theme: "material",
+              }}
+              onBeforeChange={(editor, data, value) =>
+                setFormData({ ...formData, code: value })
+              }
+            />
+          </div>
         </div>
 
         <div className="form-group">

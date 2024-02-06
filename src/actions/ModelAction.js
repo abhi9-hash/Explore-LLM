@@ -16,16 +16,17 @@ import {
 } from "../constants/ModelConstant";
 
 // get all models
+const baseURL = process.env.REACT_APP_BASE_URL+'/models'
 export const getModel = () => async (dispatch) => {
   try {
     dispatch({
       type: ALL_MODEL_REQUEST,
     });
     // https://my-json-server.typicode.com/abhi9-hash/mock-data/models`;
-    let link = `http://localhost:4000/models`;
+    // let link = `${baseURL}/models`;
     // ?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`
 
-    const { data } = await axios.get(link);
+    const { data } = await axios.get(baseURL);
     console.log({ data });
     dispatch({
       type: ALL_MODEL_SUCCESS,
@@ -44,8 +45,8 @@ export const getFilteredModel =
   ({ numOfReviews, category, ratings, searchQuery }) =>
   async (dispatch, getState) => {
     try {
-      let link = `http://localhost:4000/models`;
-      const { data: models } = await axios.get(link);
+      // let link = `${baseURL}/models`;
+      const { data: models } = await axios.get(baseURL);
       console.log({ models });
       // return
       dispatch({
@@ -103,7 +104,7 @@ export const createModel = (modelData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `https://smartbuycom-modelion.up.railway.app/api/v1/admin/model/new`,
+      `${baseURL}/new`,
       modelData,
       config
     );
@@ -126,7 +127,7 @@ export const getModelDetails = (id) => async (dispatch) => {
     dispatch({
       type: MODEL_DETAILS_REQUEST,
     });
-    const { data } = await axios.get(`http://localhost:4000/models/`);
+    const { data } = await axios.get(baseURL);
     const model = data.filter((i) => i.id == id)[0];
     dispatch({
       type: MODEL_DETAILS_SUCCESS,
@@ -146,7 +147,7 @@ export const getFeaturedModels = (id) => async (dispatch) => {
     dispatch({
       type: FEATURED_MODEL_REQUEST,
     });
-    const { data } = await axios.get(`http://localhost:4000/models/`);
+    const { data } = await axios.get(baseURL);
     console.log({ data });
 
     const models = data.filter((i) => i.featured);
