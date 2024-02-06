@@ -94,7 +94,7 @@ const ModelForm = () => {
 
         <div className="form-group">
           <label>Code:</label>
-          <div style={{ width: "500px", overflow: "auto" }}>
+          <div style={{ width: "500px", overflow: "auto",  }}>
             <CodeMirror
               value={formData.code}
               options={{

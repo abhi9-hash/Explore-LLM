@@ -6,8 +6,8 @@ import {
   getFilteredModel,
   getModel,
 } from "../../../actions/ModelAction";
-import Typography from "@material-ui/core/Typography";
-import Slider from "@material-ui/core/Slider";
+import Typography from "@mui/material/Typography";
+import Slider from "@mui/material/Slider";
 import { useAlert } from "react-alert";
 
 const categories = [
