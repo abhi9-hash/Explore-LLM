@@ -1,5 +1,4 @@
 import React, { useState, Fragment, useMemo } from "react";
-import MetaData from "../../layout/MetaData";
 import "./Search.css";
 import { clearingError, getFilteredModel } from "../../../actions/ModelAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,8 +35,6 @@ const Search = () => {
 
   return (
     <Fragment>
-      <MetaData title="Search A Model -- ECOMMERCE" />
-
       <form className="searchBox" onSubmit={searchSubmitHandler}>
         <input
           type="text"

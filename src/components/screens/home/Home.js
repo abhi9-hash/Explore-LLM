@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from "react";
 import "./Home.css";
-import MetaData from "../../layout/MetaData";
 import { clearingError, getFeaturedModels } from "../../../actions/ModelAction";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../layout/loader/Loader";
@@ -23,7 +22,6 @@ const Home = () => {
 
   return (
     <Fragment>
-      <MetaData title={"SmartChoice"} />
       <div className="banner">
         <p>Welcome to SmartChoice</p>
         <h1>Find Amazing LLMs Here</h1>

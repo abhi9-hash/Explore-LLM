@@ -5,7 +5,6 @@ import { clearingError, getModel } from "../../../actions/ModelAction";
 import Loader from "../../layout/loader/Loader";
 import ModelCard from "../../shared/model-card/ModelCard";
 import { useAlert } from "react-alert";
-import MetaData from "../../layout/MetaData";
 import FilterBox from "../../shared/filter-box/FilterBox";
 import Search from "../../shared/search/Search";
 
@@ -41,7 +40,6 @@ const Models = () => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title={`Models--SmartChoice`} />
           <Search />
           <h2 className="modelsHeading"> Models </h2>
 
