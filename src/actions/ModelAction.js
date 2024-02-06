@@ -13,6 +13,9 @@ import {
   MODEL_DETAILS_FAIL,
   MODEL_DETAILS_SUCCESS,
   CLEAR_ERRORS,
+  FILTERED_MODEL_REQUEST,
+  FILTERED_MODEL_SUCCESS,
+  FILTERED_MODEL_FAIL,
 } from "../constants/ModelConstant";
 
 // get all models
@@ -41,55 +44,78 @@ export const getModel = () => async (dispatch) => {
 };
 
 //get filtered models
+// export const getFilteredModel =
+//   ({ numOfReviews, category, ratings, searchQuery }) =>
+//   async (dispatch, getState) => {
+//     try {
+//       // let link = `${baseURL}/models`;
+//       const { data: models } = await axios.get(baseURL);
+//       console.log({ models });
+//       // return
+//       dispatch({
+//         type: ALL_MODEL_REQUEST,
+//       });
+
+//       let data = models;
+//       if (category && category != "") {
+//         data = models.filter((i) => i.category == category);
+//       }
+
+//       if (ratings && ratings != 0) {
+//         data = data.filter((i) => i.ratings >= ratings);
+//       }
+
+//       if (
+//         numOfReviews != null &&
+//         numOfReviews[0] != 0 &&
+//         numOfReviews[1] != 15000
+//       ) {
+//         data = data.filter(
+//           (i) =>
+//             i.numOfReviews >= numOfReviews[0] &&
+//             i.numOfReviews <= numOfReviews[1]
+//         );
+//       }
+
+//       if (searchQuery != "" && searchQuery)
+//         data = data.filter((model) =>
+//           Object.values(model).some((prop) =>
+//             prop.toString().toLowerCase().includes(searchQuery.toLowerCase())
+//           )
+//         );
+
+//       console.log(data);
+//       dispatch({
+//         type: ALL_MODEL_SUCCESS,
+//         payload: data,
+//       });
+//     } catch (error) {
+//       dispatch({
+//         type: ALL_MODEL_FAIL,
+//         payload: error.response.data?.message,
+//       });
+//     }
+//   };
+
+
 export const getFilteredModel =
-  ({ numOfReviews, category, ratings, searchQuery }) =>
+  (filteredModels) =>
   async (dispatch, getState) => {
     try {
-      // let link = `${baseURL}/models`;
-      const { data: models } = await axios.get(baseURL);
-      console.log({ models });
       // return
       dispatch({
-        type: ALL_MODEL_REQUEST,
+        type: FILTERED_MODEL_REQUEST,
       });
 
-      let data = models;
-      if (category && category != "") {
-        data = models.filter((i) => i.category == category);
-      }
-
-      if (ratings && ratings != 0) {
-        data = data.filter((i) => i.ratings >= ratings);
-      }
-
-      if (
-        numOfReviews != null &&
-        numOfReviews[0] != 0 &&
-        numOfReviews[1] != 15000
-      ) {
-        data = data.filter(
-          (i) =>
-            i.numOfReviews >= numOfReviews[0] &&
-            i.numOfReviews <= numOfReviews[1]
-        );
-      }
-
-      if (searchQuery != "" && searchQuery)
-        data = data.filter((model) =>
-          Object.values(model).some((prop) =>
-            prop.toString().toLowerCase().includes(searchQuery.toLowerCase())
-          )
-        );
-
-      console.log(data);
       dispatch({
-        type: ALL_MODEL_SUCCESS,
-        payload: data,
+        type: FILTERED_MODEL_SUCCESS,
+        payload: filteredModels,
       });
     } catch (error) {
+      console.log({error})
       dispatch({
-        type: ALL_MODEL_FAIL,
-        payload: error.response.data?.message,
+        type: FILTERED_MODEL_FAIL,
+        payload: error,
       });
     }
   };

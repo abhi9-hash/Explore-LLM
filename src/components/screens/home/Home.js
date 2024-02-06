@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from "react";
-// import { cgMouse } from 'react-icons/ai'
 import "./Home.css";
 import MetaData from "../../layout/MetaData";
 import { clearingError, getFeaturedModels } from "../../../actions/ModelAction";

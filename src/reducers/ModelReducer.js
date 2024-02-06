@@ -16,19 +16,32 @@ import {
   FEATURED_MODEL_REQUEST,
   FEATURED_MODEL_SUCCESS,
   FEATURED_MODEL_FAIL,
+  FILTERED_MODEL_REQUEST,
+  FILTERED_MODEL_SUCCESS,
+  FILTERED_MODEL_FAIL,
 } from "../constants/ModelConstant";
 
-export const modelsReducer = (state = { models: [] }, action) => {
+export const modelsReducer = (
+  state = { models: [], filteredModels: [] },
+  action
+) => {
   switch (action.type) {
     case ALL_MODEL_REQUEST:
       return {
         loading: true,
         models: [],
+        filteredModels: state.filteredModels,
       };
     case FEATURED_MODEL_REQUEST:
       return {
         loading: true,
         featuredModels: [],
+      };
+    case FILTERED_MODEL_REQUEST:
+      return {
+        loading: true,
+        filteredModels: [],
+        models: state.models,
       };
     case ADMIN_MODEL_REQUEST:
       return {
@@ -44,9 +57,16 @@ export const modelsReducer = (state = { models: [] }, action) => {
       return {
         loading: false,
         models: action.payload,
+        filteredModels: action.payload,
         // productsCount: action.payload.productsCount,
         // resultPerPage: action.payload.resultPerPage,
         // filteredProductsCount: action.payload.filteredProductsCount,
+      };
+    case FILTERED_MODEL_SUCCESS:
+      return {
+        loading: false,
+        filteredModels: action.payload,
+        models: state.models,
       };
 
     case ADMIN_MODEL_SUCCESS:
@@ -55,6 +75,7 @@ export const modelsReducer = (state = { models: [] }, action) => {
         models: action.payload,
       };
     case FEATURED_MODEL_FAIL:
+    case FILTERED_MODEL_FAIL:
     case ALL_MODEL_FAIL:
     case ADMIN_MODEL_FAIL:
       return {

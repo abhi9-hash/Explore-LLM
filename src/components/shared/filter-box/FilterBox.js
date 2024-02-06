@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useMemo, useState } from "react";
 import "./FilterBox.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -11,18 +11,15 @@ import Slider from "@material-ui/core/Slider";
 import { useAlert } from "react-alert";
 
 const categories = [
-'text-to-text',
-'text-to-speech',
-'text-to-image',
-'image-to-text'
+  "text-to-text",
+  "text-to-speech",
+  "text-to-image",
+  "image-to-text",
 ];
 
 const FilterBox = () => {
   const dispatch = useDispatch();
-  const {
-    models,
-    error,
-  } = useSelector((state) => state.models);
+  const { models, error } = useSelector((state) => state.models);
 
   const [filters, setFilters] = useState({
     numOfReviews: [0, 150],
@@ -37,17 +34,26 @@ const FilterBox = () => {
     setFilters({ ...filters, [name]: value });
   };
 
+  const filteredModels = useMemo(() => {
+    console.log({ models });
+    return models?.filter((model) => {
+      return (
+        model.numOfReviews >= filters.numOfReviews[0] &&
+        model.numOfReviews <= filters.numOfReviews[1] &&
+        (filters.category === "" || model.category === filters.category) &&
+        model.ratings >= filters.ratings
+      );
+    });
+  }, [models, filters]);
 
   useEffect(() => {
-    console.log(models);
     if (error) {
       alert.error(error);
       dispatch(clearingError);
     }
+    dispatch(getFilteredModel(filteredModels));
+  }, [error, filteredModels]);
 
-      dispatch(getFilteredModel(filters));
-
-  }, [ filters, error, alert]);
   return (
     <Fragment>
       <div className="filterBox">

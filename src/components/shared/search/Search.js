@@ -1,22 +1,37 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useMemo } from "react";
 import MetaData from "../../layout/MetaData";
-import { useNavigate } from "react-router-dom";
 import "./Search.css";
-import { getFilteredModel } from "../../../actions/ModelAction";
-import { useDispatch } from "react-redux";
+import { clearingError, getFilteredModel } from "../../../actions/ModelAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
+  const { models, filteredModels, error } = useSelector(
+    (state) => state.models
+  );
+
   const dispatch = useDispatch();
+
+  const searchedModels = useMemo(() => {
+    console.log({ models });
+    if (searchQuery != "")
+      return models?.filter((model) =>
+        Object.values(model).some((prop) =>
+          prop.toString().toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      );
+    else return filteredModels;
+  }, [models, filteredModels, searchQuery]);
 
   const searchSubmitHandler = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      dispatch(getFilteredModel({ searchQuery }));
-    } else {
-      navigate("/models");
-    }
+      if (error) {
+        alert.error(error);
+        dispatch(clearingError);
+      }
+      dispatch(getFilteredModel(searchedModels));
+    } else dispatch(getFilteredModel(models));
   };
 
   return (
