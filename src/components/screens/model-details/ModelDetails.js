@@ -75,6 +75,8 @@ const ModelDetails = () => {
               <Carousel height={400} className="carousel">
                 {model?.images?.map((item, i) => (
                   <img
+                    width="100%"
+                    height="100%"
                     className="CarouselImage"
                     key={item.url}
                     src={item.url}
