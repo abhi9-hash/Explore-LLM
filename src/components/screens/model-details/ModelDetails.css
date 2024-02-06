@@ -41,8 +41,7 @@
 }
 
 .CarouselImage {
-  width: 25vmax;
-  height: 100%;
+  width: 25rem;
 }
 
 .detailsBlock-1 > h2 {
@@ -253,6 +252,10 @@
     padding: 1.5vmax;
     width: 3vmax;
     font: 400 1.8vmax;
+  }
+
+  .CarouselImage {
+    width: 100%;
   }
 
   .detailsBlock-3 > p {

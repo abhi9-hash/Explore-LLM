@@ -10,7 +10,9 @@ import ModelCard from "../../shared/model-card/ModelCard";
 const Home = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
-  const { loading, error, featuredModels } = useSelector((state) => state.models);
+  const { loading, error, featuredModels } = useSelector(
+    (state) => state.models
+  );
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -21,28 +23,25 @@ const Home = () => {
 
   return (
     <Fragment>
+      <MetaData title={"SmartChoice"} />
+      <div className="banner">
+        <p>Welcome to SmartChoice</p>
+        <h1>Find Amazing LLMs Here</h1>
+
+        <a href="#container">
+          <button>Explore</button>
+        </a>
+      </div>
+
+      <h2 className="homeHeading">Featured Models</h2>
       {loading ? (
         <Loader />
       ) : (
-        <Fragment>
-          <MetaData title={"SmartChoice"} />
-          <div className="banner">
-            <p>Welcome to SmartChoice</p>
-            <h1>Find Amazing LLMs Here</h1>
-
-            <a href="#container">
-              <button>Explore</button>
-            </a>
-          </div>
-
-          <h2 className="homeHeading">Featured Models</h2>
-
-          <div className="container" id="container">
-            {featuredModels?.map((model) => (
-              <ModelCard key={model.id} model={model} />
-            ))}
-          </div>
-        </Fragment>
+        <div className="container" id="container">
+          {featuredModels?.map((model) => (
+            <ModelCard key={model.id} model={model} />
+          ))}
+        </div>
       )}
     </Fragment>
   );
