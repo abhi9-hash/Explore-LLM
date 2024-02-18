@@ -22,13 +22,13 @@ const App = () => {
     };
   }, []);
 
-  const speakfnc = () => {
+  const speakHandler = () => {
     const speakText = new SpeechSynthesisUtterance(value);
     speakText.voice = currLang;
     synth.speak(speakText);
   };
 
-  const speakfnckey = (event) => {
+  const speakHandlerKey = (event) => {
     if (event.key === "Enter") {
       const speakText = new SpeechSynthesisUtterance(value);
       speakText.voice = currLang;
@@ -36,15 +36,15 @@ const App = () => {
     }
   };
 
-  const stopfnc = () => {
+  const stopHandler = () => {
     synth.cancel();
   };
 
-  const textchange = (event) => {
+  const textChange = (event) => {
     setValue(event.target.value);
   };
 
-  const langchng = (event) => {
+  const langChange = (event) => {
     const langName = event.target.value;
     const selectedLang = find(voicelist, { name: langName });
 
@@ -56,25 +56,25 @@ const App = () => {
       <h1 className="heading">Text-to-Speech Converter</h1>
       
       <VoiceChat/>
-      <select className="select" onChange={langchng}>
+      <select className="select" onChange={langChange}>
         {voicelist.map((item, index) => (
           <option key={`${index}_${item.name}`}>{item.name}</option>
         ))}
       </select>
 
       <textarea
-        onKeyUp={speakfnckey}
+        onKeyUp={speakHandlerKey}
         className="textarea"
         placeholder="Enter Text to Speak"
-        onChange={textchange}
+        onChange={textChange}
       ></textarea>
 
       <div className="btnparent">
-        <button className="btn" onClick={speakfnc}>
+        <button className="btn" onClick={speakHandler}>
           Speak
         </button>
 
-        <button className="btn" onClick={stopfnc}>
+        <button className="btn" onClick={stopHandler}>
           Stop
         </button>
       </div>

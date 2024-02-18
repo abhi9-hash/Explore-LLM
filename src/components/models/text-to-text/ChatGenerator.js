@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './ChatGenerator.css'; 
-import sendMessageToChatGPT from './sendMessageToChatGPT';
+import messageHandler from './MessageHandler';
 
 const ChatGenerator = () => {
     const [userMessage, setUserMessage] = useState('');
     const [botResponse, setBotResponse] = useState('');
   
     const handleSendMessage = async () => {
-      const response = await sendMessageToChatGPT(userMessage);
+      const response = await messageHandler(userMessage);
       setBotResponse(response);
     };
   

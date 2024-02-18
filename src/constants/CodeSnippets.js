@@ -1,34 +1,22 @@
 export const TEXT_TO_TEXT = `
-import axios from "axios";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const openaiApiKey = process.env.REACT_APP_OPENAI_KEY
-const openaiApiUrl = process.env.REACT_APP_OPENAI_URL
+const genAI = new GoogleGenerativeAI(process.env.REACT_APP_API_KEY);
 
-const sendMessageToChatGPT = async (message) => {
+const messageHandler = async (message) => {
   try {
-    const response = await axios.post(
-      openaiApiUrl,
-      {
-        prompt: message,
-        max_tokens: 150,
-        model:"gpt-3.5-turbo",
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: Bearer openaiApiKey,
-        },
-      }
-    );
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-    return response.data.choices[0]?.text.trim();
+    const { response } = await model.generateContent(message);
+
+    return response.candidates[0].content.parts[0].text;
   } catch (error) {
-    console.error("Error communicating with ChatGPT:", error);
+    console.error("Error communicating with model:", error);
     return "Please purchase me for interacting";
   }
 };
 
-export default sendMessageToChatGPT;
+export default messageHandler;
 `;
 
 export const TEXT_TO_IMAGE = `
