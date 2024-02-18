@@ -90,7 +90,7 @@ const FilterBox = () => {
           ))}
         </ul>
 
-        <fieldset>
+        {/* <fieldset> */}
           <Typography component="legend">
             <b>Ratings Above</b>
           </Typography>
@@ -103,7 +103,7 @@ const FilterBox = () => {
             min={0}
             max={5}
           />
-        </fieldset>
+        {/* </fieldset> */}
         <button
           className="filter-button"
           onClick={() => {
